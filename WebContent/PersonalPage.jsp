@@ -6,32 +6,116 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<s:head theme="xhtml"/>
-<sx:head parseContent="true"/>
-<meta http-equiv="Content-Type" content="text/html; charset=GBK">
-<title>Insert title here</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>东华活动站</title>
+        <link rel="stylesheet" type="text/css" href="css/main.css" />
 </head>
 
 <body>
-	<!--<a href="ModifyInfo.jsp">修改个人信息</a>-->
-	<div>
-	
-			<s:iterator  value="#session.user" id="item">
 
-				<p>我的名称：<s:property value="name"/></p>
+<header id="header">
+	<a href="index.jsp" class="logo"><strong>东华活动站</strong> 开启你的快乐之行</a>
+	<ul class="icons">
+		<li><a href="UserLogin.jsp" ><span class="label">登陆</span></a></li>
+		<li><a href="UserRegister.jsp" ><span class="label">注册</span></a></li>
+		<li><a href="AdminTest.jsp" ><span class="label">成为管理员</span></a></li>
+		<li><a href="publishAct.jsp"><span class="label">发布活动</span></a></li>
+        <s:url id="showPersonalPage_url" action="show_ShowPersonalPage"></s:url>
+		<li><s:a href="%{showPersonalPage_url}"><span class="label">我的账户</span></s:a></li>
+	</ul>
+</header>
+
+<section>
+
+	<header class="main">
+		<h1> </h1>
+		<s:iterator  value="#session.user" id="item">
+
+				<h1><s:property value="name"/></h1>
 			
-			</s:iterator>
-
+		</s:iterator>
+	</header>
+	
+	<div class="row 200%">
+	
+	<div class="6u 12u$(medium)">
+		<div class="row">
+			<div class="6u 12u$(small)">
+		
+				<h4>个人基本信息</h4>
+				<ul class="alt">
+					<s:iterator  value="#session.user" id="item">
+					<li>年级：<s:property value="grade"/></li>
+					<li>专业：<s:property value="major"/></li>
+					<li>QQ：<s:property value="QQ"/></li>
+					</s:iterator>
+				</ul>
+		
+			</div>
+		</div>
 	</div>
-	<div>
-		--------------------------我发布的活动----------------------
-			<s:iterator  value="#session.MyActivity" id="item">
-
-				<p>
+	
+	<div class="6u$ 12u$(medium)">
+		<div class="box">
+			<h3>个人宣言</h3>
+			<s:iterator  value="#session.user" id="item">
+			<p><s:property value="message"/></p>
+			</s:iterator>
+		</div>
+	</div>
+	
+	</div>
+	
+	<hr class="major" />
+	
+	<h2>我发布的活动</h2>
+	
+	 <div class="posts">
+	 	<s:iterator  value="#session.MyActivity" id="item">
+	 		<article>
+	 			<s:url id="checkAct_url" action="show_ShowActInfo" >
+   					<s:param name="activity.Id">
+    		  			<s:property value="Id"/>
+  			 		</s:param>
+				</s:url>
 					
-					<s:url id="checkAct_url" action="show_ShowActInfo" >
+				<s:a href="%{checkAct_url}" cssClass="image"><img src="img/bg.jpg" alt="" /></s:a>
+            	<h3> <s:property value="name"/> </h3>
+				<p> 开始时间：<s:property value="begin"/> </p>
+                <p> 结束时间：<s:property value="end"/> </p>
+				<ul class="actions">
+					<li><s:a href="%{checkAct_url}" cssClass="button">查看更多</s:a></li>
+				</ul>
+	 		</article>
+	 	</s:iterator>
+	 </div>
+	 
+	 <hr class="major" />
+	
+	<h2>我参加的小队</h2>
+	
+	 <div class="posts">
+	 	<s:iterator  value="#session.teamList" id="item">
+	 		<article>
+	 			<div class="box">
+					<h3> <s:property value="name"/> </h3>
+		
+					<p>队伍宣言： <s:property value="message"/></p>
+					<p>队伍状态 
+		
+						<s:if test="state == 0">
+						招聘队员中。。。
+						</s:if>
+						<s:else>
+						不好意思，我们满员了。O(∩_∩)O
+						</s:else>
+		
+					</p>
+
+			
+					<s:url id="checkTeam_url" action="show_ShowTeamInfo" >
  
-   							<s:param name="activity.Id">
+   							<s:param name="team.Id">
  
     		  					<s:property value="Id"/>
 
@@ -39,59 +123,103 @@
  
 					</s:url>
 
-					<s:a href="%{checkAct_url}">  <s:property value="name"/>    <s:property value="begin"/>  </s:a>
-				</p>
-			
-			</s:iterator>
+					<p> <s:a href="%{checkTeam_url}"> 查看队伍详细信息 </s:a>
+					
+					
+					<s:url id="checkAppList_url" action="app_ShowAppList" >
+ 
+   						<s:param name="team.Id">
+ 
+    		  				<s:property value="Id"/>
 
-	</div>
-	<div>
-		--------------------------我参加的组队----------------------
-	<s:iterator  value="#session.teamList" id="item">
-		<p>队伍名称： <s:property value="name"/></p>	
-			队伍宣言：<s:property value="message"/><br/><br/>
-	
-			队伍QQ群：<s:property value="QQ"/><br/><br/>
-	
-			队伍人数：<s:property value="memberNum"/><br/><br/>
-	
-			队伍状态：
-			<s:if test="team.state==0">
-				招聘人员。。。
-			</s:if>
-			<s:else>
-				满员了~
-			</s:else>
-			
-		<s:url id="checkAppList_url" action="app_ShowAppList" >
+  			 			</s:param>
  
-   				<s:param name="team.Id">
- 
-    		  			<s:property value="Id"/>
+					</s:url>
+		
+					<s:a href="%{checkAppList_url}"> 查看申请列表  </s:a>  </p>
+				</div>
+	 		</article>
+	 	</s:iterator>
+	 </div>
+	 
+	 <hr class="major" />
+	
+	<h2>正在申请的小队</h2>
+	
+	 <div class="posts">
+	 	<s:iterator  value="#session.appTeamList" id="item">
+	 		<article>
+	 			<div class="box">
+					<h3> <s:property value="name"/> </h3>
+		
+					<p>队伍宣言： <s:property value="message"/></p>
+					<p>队伍状态 
+		
+						<s:if test="state == 0">
+						招聘队员中。。。
+						</s:if>
+						<s:else>
+						不好意思，我们满员了。O(∩_∩)O
+						</s:else>
+		
+					</p>
 
-  			 	</s:param>
+			
+					<s:url id="checkTeam_url" action="show_ShowTeamInfo" >
  
-		</s:url>
+   							<s:param name="team.Id">
+ 
+    		  					<s:property value="Id"/>
+
+  			 				</s:param>
+ 
+					</s:url>
+
+					<p> <s:a href="%{checkTeam_url}"> 查看队伍详细信息 </s:a>
+	 			</div>
+	 		</article>
+	 	</s:iterator>
+	 </div>
+	 
+	 <hr class="major" />
+	
+	<h2>被拒绝的小队</h2>
+	
+	 <div class="posts">
+	 	<s:iterator  value="#session.failTeamList" id="item">
+	 		<article>
+	 			<div class="box">
+	 				<h3> <s:property value="name"/> </h3>
 		
-		<p>  <s:a href="%{checkAppList_url}"> 查看申请列表  </s:a>  </p>
+					<p>队伍宣言： <s:property value="message"/></p>
+					<p>队伍状态 
 		
-		<br/><br/>--------------------------------	
-	</s:iterator>
+						<s:if test="state == 0">
+						招聘队员中。。。
+						</s:if>
+						<s:else>
+						不好意思，我们满员了。O(∩_∩)O
+						</s:else>
+		
+					</p>
+
+			
+					<s:url id="checkTeam_url" action="show_ShowTeamInfo" >
+ 
+   							<s:param name="team.Id">
+ 
+    		  					<s:property value="Id"/>
+
+  			 				</s:param>
+ 
+					</s:url>
+
+					<p> <s:a href="%{checkTeam_url}"> 查看队伍详细信息 </s:a>
+	 			</div>
+	 		</article>
+	 	</s:iterator>
+	 </div>
 	
-	<br/><br/>
-	--------------------------我申请的组队----------------------
-	<s:iterator  value="#session.appTeamList" id="item">
-		<p>队伍名称： <s:property value="name"/></p>	
-		--------------------------------	
-	</s:iterator>
-	
-	<br/><br/>
-	--------------------------被拒绝的组队----------------------
-	<s:iterator  value="#session.failTeamList" id="item">
-		<p>队伍名称： <s:property value="name"/></p>	
-		-------------------------------
-	</s:iterator>
-	
-	</div>
+</section>
 </body>
 </html>

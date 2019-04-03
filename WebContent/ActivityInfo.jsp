@@ -25,6 +25,7 @@
 <section>
 
 	<header class="main">
+		<h1> </h1>
 		<h1><s:property value="activity.name"/></h1>
 	</header>
 	
