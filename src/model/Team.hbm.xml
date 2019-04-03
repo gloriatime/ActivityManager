@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="model">
+
+     <class name="Team" table="t_team" >
+        <id name="Id" type="int" column="Id">
+            
+        </id>
+        <property name="name" type="string" column="name" />
+        <property name="memberNum" type="int" column="memberNum" />
+        <property name="leader" type="int" column="leader" />
+        <property name="visible" type="int" column="visible" />
+        <property name="QQ" type="string" column="QQ" />
+         <property name="message" type="string" column="message" />
+        <property name="state" type="int" column="state" />
+    </class>
+    
+    
+</hibernate-mapping>

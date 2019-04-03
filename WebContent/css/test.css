@@ -1,0 +1,24 @@
+@charset "UTF-8";
+/*timePicker*/
+#begin,#end{
+	height:100px;
+	width:100px;
+}
+
+.field p{
+	text-align:left;
+}
+
+input[type="text"] {
+			border-color: #ff7496;
+			width: 100%;
+			
+			
+		}
+
+#begin input[type="text"] {
+			border-color: #ff7496;
+			width: 100%;
+			
+		}
+		

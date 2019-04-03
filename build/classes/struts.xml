@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    
+    <constant name="struts.ui.theme" value="simple" />
+    <constant name="struts.i18n.encoding" value="UTF-8"></constant>
+    <constant name="struts.custom.i18n.resources" value="messages" />
+    
+   
+  	<constant name="struts.objectFactory" value="spring"/>
+    
+    <package name="default" extends="struts-default">
+	
+        <action name="login_*" class="loginAction" method="{1}">
+
+            <result name="input">/index.jsp</result>
+			<result name="error">/error.jsp</result>
+			
+        </action>
+		
+		<action name="register_*" class="registerAction" method="{1}">
+
+            <result name="user">/UserLogin.jsp</result>
+			<result name="error">/error.jsp</result>
+			<result name="input">/error.jsp</result>
+			
+        </action>
+        
+        <action name="publish_*" class="publishAction" method="{1}">
+
+            <result name="activity">/index.jsp</result>
+            <result name="team" type="redirectAction" >show_ShowActInfo</result>
+			<result name="error">/error.jsp</result>
+			<result name="success">/success.jsp</result>
+			<result name="input">/error.jsp</result>
+			
+        </action>
+        
+        <action name="show_*" class="showAction" method="{1}">
+
+            <result name="index">/index.jsp</result>
+            <result name="teamForm">/publishTeam.jsp</result>
+            <result name="teamInfo">/TeamInfo.jsp</result>
+            <result name="actInfo">/ActivityInfo.jsp</result>
+            <result name="userInfo">/UserInfo.jsp</result>
+            <result name="personalPage">/PersonalPage.jsp</result>
+			<result name="error">/error.jsp</result>
+			<result name="input">/error.jsp</result>
+			
+        </action>
+        
+        <action name="app_*" class="applicationAction" method="{1}">
+
+            <result name="index">/index.jsp</result>
+            <result name="applicationList">/ApplicationList.jsp</result>
+			<result name="error">/error.jsp</result>
+			<result name="success">/success.jsp</result>
+			<result name="input">/error.jsp</result>
+        </action>
+    </package>
+</struts>

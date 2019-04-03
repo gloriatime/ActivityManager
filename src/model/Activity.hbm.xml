@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="model">
+
+     <class name="Activity" table="t_activity" >
+        <id name="Id" type="int" column="Id">
+            
+        </id>
+        <property name="name" type="string" column="name" />
+        <property name="classes" type="int" column="class" />
+        <property name="isLong" type="int" column="isLong" />
+        <property name="begin" type="date" column="begin" />
+        <property name="end" type="date" column="end" />
+        <property name="teamNum" type="int" column="teamNum" />
+        <property name="content" type="string" column="content" />
+        <property name="warning" type="string" column="warning" />
+        <property name="owner" type="int" column="owner" />
+    </class>
+    
+    
+</hibernate-mapping>
