@@ -79,11 +79,17 @@
 		<h2>管理员留言</h2>
 		<p><s:property value="activity.warning"/></p>
 	</s:else>
+	
+	<s:url id="showComments_url" action="comment_showComments"> 			
+   		<s:param name="activity.Id">
+    		  <s:property value="activity.Id"/>
+  		</s:param>
+	</s:url>
 
 	<hr class="major" />
 	<ul class="actions fit">
 		<li><a href="#" class="button special fit">小队 (<s:property value="activity.teamNum"/>) </a></li>
-		<li><a href="#" class="button fit">评论</a></li>
+		<li><a href="%{showComments_url}" class="button fit">评论</a></li>
 	</ul>
 	
 	<s:url id="showTeamForm_url" action="show_ShowTeamForm"> 			
@@ -132,6 +138,23 @@
 					<s:a href="%{checkTeam_url}"> 查看队伍详细信息 </s:a>
 				</p>
 			</s:if>
+	</div>
+	</article>
+	
+	</s:iterator>
+	
+	</div>
+	
+	<div class="posts">
+	
+	<s:iterator  value="#session.commentList" id="item">
+	<article>
+	<div class="box">
+		<h3> <s:property value="critic.name"/> </h3>
+		
+			<p> <s:property value="content"/></p>
+			<p> <s:property value="date"/> </p>
+			
 	</div>
 	</article>
 	

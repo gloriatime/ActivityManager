@@ -3,6 +3,7 @@ package dao;
 import java.util.List;
 
 import model.Team;
+import model.TeamComment;
 
 public interface TeamDao {
 	

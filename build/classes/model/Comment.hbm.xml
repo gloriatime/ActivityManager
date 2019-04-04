@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="model">
+
+     <class name="Comment" table="t_comment" >
+        <id name="Id" type="int" column="Id"></id>
+        <property name="critic" type="int" column="critic"></property>
+        <property name="content" type="string" column="content" />
+		<property name="date" type="Date" column="date"></property>
+		<property name="belong" type="int" column="belong"></property>
+        
+    </class>
+    
+    
+</hibernate-mapping>
