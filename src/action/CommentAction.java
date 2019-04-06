@@ -72,21 +72,35 @@ public class CommentAction extends ActionSupport{
     	this.userService = userService;
 	}
 	
-	public String addComment() {
-		commentService.addComment(comment);
+	public String AddComment() {
+		
+		User user = (User) ActionContext.getContext().getSession().get("user");
+		
+		// Ã»µÇÂ½
+		if(user == null) return "error";
+		
 		activity = activityService.getActById(activity.getId());
+		comment.setBelong(activity.getId());
+		commentService.addComment(comment);
+		
 		user = userService.getUserById(activity.getOwner());
 		ActionContext.getContext().getSession().put("commentList", commentService.getCommentListByActId(activity.getId()));
 		
 		return "add_comment_finish";
 	}
 	
-	public String showComments() {
+	public String ShowComments() {
 		
 		activity = activityService.getActById(activity.getId());
 		user = userService.getUserById(activity.getOwner());
 		ActionContext.getContext().getSession().put("commentList", commentService.getCommentListByActId(activity.getId()));
 		
 		return "show_comments";
+	}
+	
+	public String ShowCommentForm() {
+		activity = activityService.getActById(activity.getId());
+		
+		return "show_comment_form";
 	}
 }

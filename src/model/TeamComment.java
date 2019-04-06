@@ -14,12 +14,6 @@ public class TeamComment {
 	public void setId(int id) {
 		Id = id;
 	}
-	public int getCritic() {
-		return team;
-	}
-	public void setCritic(int team) {
-		this.team = team;
-	}
 	public Date getDate() {
 		return date;
 	}
@@ -37,5 +31,11 @@ public class TeamComment {
 	}
 	public void setBelong(int belong) {
 		this.belong = belong;
+	}
+	public int getTeam() {
+		return team;
+	}
+	public void setTeam(int team) {
+		this.team  = team;
 	}
 }

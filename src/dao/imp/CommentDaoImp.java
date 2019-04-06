@@ -3,19 +3,27 @@ package dao.imp;
 import java.util.List;
 
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.opensymphony.xwork2.ActionContext;
 
 import dao.CommentDao;
 import dao.TeamCommentDao;
 import model.Comment;
 import model.Team;
 import model.TeamComment;
+import model.User;
 
+@Transactional(readOnly = false)
 public class CommentDaoImp extends HibernateDaoSupport implements CommentDao {
 
 	@Override
 	public void addComment(Comment comment) {
 		// TODO Auto-generated method stub
-		 getHibernateTemplate().save(comment);
+		User user = new User();
+		user = (User)ActionContext.getContext().getSession().get("user");
+		comment.setCritic(user.getId());
+		getHibernateTemplate().save(comment);
 	}
 
 	@Override

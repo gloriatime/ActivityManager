@@ -97,10 +97,15 @@
     		  <s:property value="activity.Id"/>
   		</s:param>
 	</s:url>
+	<s:url id="showCommentForm_url" action="show_ShowCommentForm" >
+   		<s:param name="activity.Id">
+    		<s:property value="Id"/>
+  		</s:param>
+	</s:url>
 	
 	<ul class="actions fit">
 		<li><s:a href="%{showTeamForm_url}" cssClass="button fit">创建小队</s:a></li>
-		<li><a href="#" class="button special fit">发表评论</a></li>
+		<li><s:a href="%{showCommentForm_url}" cssClass="button special fit">发表评论</s:a></li>
 	</ul>
 	
 	 <div class="posts">

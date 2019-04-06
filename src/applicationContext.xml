@@ -50,7 +50,16 @@
     </bean> 
      
       
-  <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
+   <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>  
+   <tx:advice transaction-manager="transactionManager" id="tx">
+        <tx:attributes>
+            <tx:method name="save*" read-only="false" />
+            <tx:method name="update*" read-only="false" />
+            <tx:method name="delete*" read-only="false" />
+            <tx:method name="*" read-only="true" />
+        </tx:attributes>
+    </tx:advice>
+   
   
   	<!-- 用户实体 -->
   	<bean id="userDao" class="dao.imp.UserDaoImp">
@@ -82,6 +91,20 @@
   	
   	<!-- 活动队伍关系实体 -->
   	<bean id="actTeamDao" class="dao.imp.ActTeamDaoImp">
+  		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+  	</bean>
+  	
+  	<!-- 评论实体 -->
+  	<bean id="commentDao" class="dao.imp.CommentDaoImp">
+  		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+  	</bean>
+  	
+  	<!-- 小队动态实体 -->
+  	<bean id="teamCommentDao" class="dao.imp.TeamCommentDaoImp">
   		<property name="sessionFactory">
 			<ref bean="sessionFactory" />
 		</property>
@@ -121,6 +144,16 @@
   		</property>
   		<property name = "userDao">
   			<ref bean="userDao"/>
+  		</property>	
+  	</bean>
+  	
+  	<!-- 评论处理器，处理评论相关事务 -->
+  	<bean id="commentService" class="service.imp.CommentServiceImp">
+  		<property name = "commentDao">
+  			<ref bean="commentDao"/>
+  		</property>
+  		<property name = "teamCommentDao">
+  			<ref bean="teamCommentDao"/>
   		</property>	
   	</bean>
   	
@@ -173,4 +206,18 @@
 			<ref bean="teamService"/>
 		</property>	
      </bean>
+     
+     <!-- 评论活动，增加评论，展示评论等 -->
+      <bean id="commentAction" class="action.CommentAction">
+     	<property name="commentService">
+			<ref bean="commentService"/>
+		</property>	
+		<property name="userService">
+			<ref bean="userService"/>
+		</property>	
+		<property name="activityService">
+			<ref bean="activityService"/>
+		</property>	
+     </bean>
+     
  </beans>

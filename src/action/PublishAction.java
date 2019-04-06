@@ -61,7 +61,7 @@ public class PublishAction extends ActionSupport{
 		User user = (User) ActionContext.getContext().getSession().get("user");
 		
 		// Ã»µÇÂ½
-				if(user == null) return "error";
+		if(user == null) return "error";
 				
 		team.setLeader(user.getId());
 		team.setMemberNum(1);

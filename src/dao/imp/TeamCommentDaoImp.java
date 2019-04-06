@@ -3,11 +3,13 @@ package dao.imp;
 import java.util.List;
 
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
+import org.springframework.transaction.annotation.Transactional;
 
 import dao.TeamCommentDao;
 import model.Team;
 import model.TeamComment;
 
+@Transactional(readOnly = false)
 public class TeamCommentDaoImp extends HibernateDaoSupport implements TeamCommentDao {
 
 	@Override

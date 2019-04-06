@@ -92,6 +92,19 @@ public class ShowAction extends ActionSupport{
 		
 		return "teamForm";
 	}
+	
+	public String ShowCommentForm() {
+		
+		
+		User user = (User) ActionContext.getContext().getSession().get("user");
+		
+		// Ã»µÇÂ½
+		if(user == null) return "error";
+		activity = activityService.getActById(activity.getId());
+		
+		return "commentForm";
+	}
+	
 	public String ShowTeamInfo() {
 		
 		team = teamService.getTeamById(team.getId());

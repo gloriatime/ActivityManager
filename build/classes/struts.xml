@@ -43,6 +43,7 @@
 
             <result name="index">/index.jsp</result>
             <result name="teamForm">/publishTeam.jsp</result>
+             <result name="commentForm">/AddComment.jsp</result>
             <result name="teamInfo">/TeamInfo.jsp</result>
             <result name="actInfo">/ActivityInfo.jsp</result>
             <result name="userInfo">/UserInfo.jsp</result>
@@ -64,6 +65,7 @@
         <action name="comment_*" class="commentAction" method="{1}">
         	<result name="add_comment_finish">/ActivityInfo.jsp</result>
         	<result name="show_comments">/ActivityInfo.jsp</result>
+        	<result name="show_comment_form">/AddComment.jsp</result>
         </action>
     </package>
 </struts>

@@ -9,7 +9,7 @@
         <id name="Id" type="int" column="Id"></id>
         <property name="critic" type="int" column="critic"></property>
         <property name="content" type="string" column="content" />
-		<property name="date" type="Date" column="date"></property>
+		<property name="date" type="java.util.Date" column="date"></property>
 		<property name="belong" type="int" column="belong"></property>
         
     </class>
