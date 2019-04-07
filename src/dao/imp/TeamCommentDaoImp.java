@@ -24,13 +24,6 @@ public class TeamCommentDaoImp extends HibernateDaoSupport implements TeamCommen
 		List<TeamComment> list = (List<TeamComment>) getHibernateTemplate().find("from TeamComment where team=?0",Id);
 		return list;
 	}
-	
-	@Override
-	public List<TeamComment> getTeamCommentByActivityId(int Id) {
-		// TODO Auto-generated method stub
-		List<TeamComment> list = (List<TeamComment>) getHibernateTemplate().find("from TeamComment where belong=?0",Id);
-		return list;
-	}
 
 	@Override
 	public void deleteTeamCommentById(int Id) {

@@ -64,6 +64,7 @@
         
         <action name="comment_*" class="commentAction" method="{1}">
         	<result name="add_comment_finish">/ActivityInfo.jsp</result>
+        	<result name="add_teamComment_finish">/TeamInfo.jsp</result>
         	<result name="show_comments">/ActivityInfo.jsp</result>
         	<result name="show_comment_form">/AddComment.jsp</result>
         </action>

@@ -10,7 +10,6 @@
         <property name="team" type="int" column="team"></property>
         <property name="content" type="string" column="content" />
 		<property name="date" type="java.util.Date" column="date"></property>
-		<property name="belong" type="int" column="belong"></property>
         
     </class>
     

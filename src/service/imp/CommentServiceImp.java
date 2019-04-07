@@ -46,12 +46,6 @@ public class CommentServiceImp implements CommentService{
 	}
 
 	@Override
-	public List<TeamComment> getTeamCommentListByActId(int Id) {
-		// TODO Auto-generated method stub
-		return teamCommentDao.getTeamCommentByActivityId(Id);
-	}
-
-	@Override
 	public List<Comment> getCommentListByUserId(int Id) {
 		// TODO Auto-generated method stub
 		return commentDao.getCommentByCriticId(Id);

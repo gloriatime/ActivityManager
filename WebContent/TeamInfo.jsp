@@ -66,6 +66,43 @@
 	
 	<hr class="major" />
 	
+	<h3>队伍动态 </h3>
+	
+	<div class="posts">
+	
+	<s:iterator  value="#session.teamCommentList" id="item">
+	<article>
+	<div class="box">
+		<h3> <s:property value="date"/> </h3>
+		
+			<p> <s:property value="content"/></p>
+			
+	</div>
+	</article>
+	
+	</s:iterator>
+	
+	</div>
+	
+	<!-- 如果不是队员显示申请框，如果是队员显示发表动态框 -->
+	<hr class="major" />
+	
+	<h3>发表动态 </h3>
+	
+	<s:form action="comment_AddTeamComment">
+		<s:hidden name="team.Id"></s:hidden>
+		<div class="12u$">
+			<s:textarea name="teamComment.content" rows="6" placeHolder="动态内容（提示：注意需要先登陆，否则跳转到出错提示后编辑的东西都没了哟~）"></s:textarea>
+		</div>
+		
+		<ul class="actions">
+			<li><s:submit value="发表"  cssClass="special" id="submit_button"></s:submit></li>
+		</ul>
+		
+	</s:form>
+	
+	<hr class="major" />
+	
 	<h3>加入小队 </h3>
 	
 	<!--<s:url id="showApplicationForm_url" action="app_AddApplication">

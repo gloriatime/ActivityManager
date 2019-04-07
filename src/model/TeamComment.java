@@ -7,7 +7,7 @@ public class TeamComment {
 	private int team;
 	private Date date = new Date();
 	private String content;
-	private int belong;
+
 	public int getId() {
 		return Id;
 	}
@@ -25,12 +25,6 @@ public class TeamComment {
 	}
 	public void setContent(String content) {
 		this.content = content;
-	}
-	public int getBelong() {
-		return belong;
-	}
-	public void setBelong(int belong) {
-		this.belong = belong;
 	}
 	public int getTeam() {
 		return team;

@@ -13,5 +13,4 @@ public interface TeamCommentDao {
 	
 	public void deleteTeamCommentById (int Id);
 
-	public List<TeamComment> getTeamCommentByActivityId(int Id);
 }

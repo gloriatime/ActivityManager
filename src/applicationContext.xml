@@ -224,6 +224,9 @@
 		<property name="activityService">
 			<ref bean="activityService"/>
 		</property>	
+		<property name="teamService">
+			<ref bean="teamService"/>
+		</property>
      </bean>
      
  </beans>

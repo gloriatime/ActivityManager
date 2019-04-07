@@ -5,27 +5,37 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import model.Activity;
 import model.Comment;
+import model.Team;
 import model.TeamComment;
 import model.User;
 import service.ActivityService;
 import service.CommentService;
+import service.TeamService;
 import service.UserService;
 
 public class CommentAction extends ActionSupport{
 	
 	private User user;
+	private Team team;
 	private Comment comment;
 	private TeamComment teamComment;
 	private Activity activity;
 	private CommentService commentService;
 	private ActivityService activityService;
 	private UserService userService;
+	private TeamService teamService;
 
 	public User getUser() {
     	return user;
 	}
 	public void setUser(User user) {
     	this.user = user;
+	}
+	public Team getTeam() {
+    	return team;
+	}
+	public void setTeam(Team team) {
+    	this.team = team;
 	}
 	public Comment getComment() {
 		return comment;
@@ -72,6 +82,13 @@ public class CommentAction extends ActionSupport{
     	this.userService = userService;
 	}
 	
+	public TeamService getTeamService() {
+    	return teamService;
+	}
+	public void setTeamService(TeamService teamService) {
+    	this.teamService = teamService;
+	}
+	
 	public String AddComment() {
 		
 		User user = (User) ActionContext.getContext().getSession().get("user");
@@ -87,6 +104,23 @@ public class CommentAction extends ActionSupport{
 		ActionContext.getContext().getSession().put("commentList", commentService.getCommentListByActId(activity.getId()));
 		
 		return "add_comment_finish";
+	}
+	
+	public String AddTeamComment() {
+		
+		User user = (User) ActionContext.getContext().getSession().get("user");
+		
+		// 没登陆
+		if(user == null) return "error";
+		
+		team = teamService.getTeamById(team.getId());
+		teamComment.setTeam(team.getId());
+		commentService.addTeamComment(teamComment);
+		ActionContext.getContext().getSession().put("teamCommentList", commentService.getTeamCommentListByTeamId(team.getId()));
+		// 清理动态的值，防止表单被初始化
+		teamComment.setContent(null);
+		
+		return "add_teamComment_finish";
 	}
 	
 	public String ShowComments() {
