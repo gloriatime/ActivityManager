@@ -94,6 +94,8 @@ public class CommentAction extends ActionSupport{
 		activity = activityService.getActById(activity.getId());
 		user = userService.getUserById(activity.getOwner());
 		ActionContext.getContext().getSession().put("commentList", commentService.getCommentListByActId(activity.getId()));
+		// 清理小队列表
+		ActionContext.getContext().getSession().put("teamList", null);
 		
 		return "show_comments";
 	}

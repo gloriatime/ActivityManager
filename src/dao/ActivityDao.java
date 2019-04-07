@@ -17,6 +17,9 @@ public interface ActivityDao {
 	// 某活动的队伍数+1
 	public void updateTeamNum(int actId);
 	
+	// 评论数+1
+	public void updateCommentNum(int actId);
+	
 	// 更新活动内容
 	public void updateAct(Activity activity);
 }

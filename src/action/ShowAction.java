@@ -77,7 +77,8 @@ public class ShowAction extends ActionSupport{
 		activity = activityService.getActById(activity.getId());
 		user = userService.getUserById(activity.getOwner());
 		teamService.getTeamByAct(activity.getId());
-		
+		// 清理评论列表
+		ActionContext.getContext().getSession().put("commentList", null);
 		return "actInfo";
 	}
 	

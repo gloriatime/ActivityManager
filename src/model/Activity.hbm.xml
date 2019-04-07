@@ -15,6 +15,7 @@
         <property name="begin" type="date" column="begin" />
         <property name="end" type="date" column="end" />
         <property name="teamNum" type="int" column="teamNum" />
+        <property name="commentNum" type="int" column="commentNum" />
         <property name="content" type="string" column="content" />
         <property name="warning" type="string" column="warning" />
         <property name="owner" type="int" column="owner" />

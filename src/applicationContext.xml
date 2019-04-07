@@ -155,6 +155,12 @@
   		<property name = "teamCommentDao">
   			<ref bean="teamCommentDao"/>
   		</property>	
+  		<property name = "userDao">
+  			<ref bean="userDao"/>
+  		</property>	
+  		<property name = "activityDao">
+  			<ref bean="activityDao"/>
+  		</property>
   	</bean>
   	
   	<!-- 登陆活动，处理用户登陆请求 -->

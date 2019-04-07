@@ -113,4 +113,16 @@ public class ActivityDaoImp extends HibernateDaoSupport implements ActivityDao{
 		getHibernateTemplate().update(activity);
 	}
 
+	@Override
+	public void updateCommentNum(int actId) {
+		// TODO Auto-generated method stub
+		List<Activity> list = (List<Activity>) getHibernateTemplate().find("from Activity where Id=?0",actId);
+		
+		Activity act = (Activity)list.get(0);
+		
+		act.setCommentNum(act.getCommentNum()+1);
+		
+		getHibernateTemplate().update(act);
+	}
+
 }

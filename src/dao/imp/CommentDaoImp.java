@@ -37,6 +37,7 @@ public class CommentDaoImp extends HibernateDaoSupport implements CommentDao {
 	public List<Comment> getCommentByActivityId(int Id) {
 		// TODO Auto-generated method stub
 		List<Comment> list = (List<Comment>) getHibernateTemplate().find("from Comment where belong=?0",Id);
+		
 		return list;
 	}
 

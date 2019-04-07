@@ -10,6 +10,7 @@ public class Activity {
 	private Date begin;
 	private Date end;
 	private int teamNum;
+	private int commentNum;
 	private String content;
 	private String warning;
 	private int owner;
@@ -57,6 +58,12 @@ public class Activity {
 	}
 	public void setTeamNum(int teamNum) {
 		this.teamNum = teamNum;
+	}
+	public int getCommentNum() {
+		return commentNum;
+	}
+	public void setCommentNum(int commentNum) {
+		this.commentNum = commentNum;
 	}
 	public String getContent() {
 		return content;
