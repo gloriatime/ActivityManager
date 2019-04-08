@@ -4,6 +4,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import model.Answer;
+import model.Application;
 import model.Team;
 import model.User;
 import model.UserTeam;
@@ -13,13 +14,14 @@ import service.UserService;
 
 public class ApplicationAction extends ActionSupport{
 	
-	Team team;
-	User user;
-	Answer answer;
-	UserTeam userTeam;
-	UserService userService;
-	TeamService teamService;
-	ApplicationService applicationService;
+	private Team team;
+	private User user;
+	private Answer answer;
+	private UserTeam userTeam;
+	private Application applicationForm;
+	private UserService userService;
+	private TeamService teamService;
+	private ApplicationService applicationService;
 	 public User getUser() {
 	    	return user;
 	 }
@@ -63,22 +65,19 @@ public class ApplicationAction extends ActionSupport{
     	this.applicationService = applicationService;
 	}
 	
-	
-	public String AddApplication() {
+	public String AddApplication() {		
 		
-		
-		System.out.println("application to team-------------------"+team.getId());
-		UserTeam ut = new UserTeam();
-		ut.setTeam(team.getId());
-		User user = (User) ActionContext.getContext().getSession().get("user");
-		
+		User user = (User) ActionContext.getContext().getSession().get("user");		
 		// 没登陆
-		if(user == null) return "error";
-				
-		ut.setUser(user.getId());
+		if(user == null) return "error";		
+		System.out.println("application to team-------------------"+team.getId());
+		System.out.println("application content-------------------"+applicationForm.getContent());
 		
-		applicationService.addApplication(ut);
-		return "index";
+		applicationForm.setTeam(team.getId());
+		applicationService.addApplication(applicationForm);
+		
+		//------------------------------后期更改：弹出一个操作成功的对话框-----------------------------------
+		return "success";
 	}
 	
 	public String ShowAppList() {
@@ -90,17 +89,15 @@ public class ApplicationAction extends ActionSupport{
 	
 	public String ChangeToRegular() {
 		
-		System.out.println("userTeamYYYY---------------------------"+user.getId()+team.getId());
-		UserTeam ut = new UserTeam();
-		ut.setTeam(team.getId());
-		ut.setUser(user.getId());
-		applicationService.changeToRegular(ut);
+		User user = (User) ActionContext.getContext().getSession().get("user");	
+		userTeam.setUser(user.getId());
+		applicationService.acceptApplication(userTeam, applicationForm);
 		return ShowAppList();
 	}
 	
 	public String ChangeToRefused() {
-		System.out.println("userTeamNNNNN---------------------------"+userTeam.getUser()+userTeam.getTeam());
-		applicationService.changeToRefused(userTeam);
+
+		applicationService.denyApplication(applicationForm);
 		return ShowAppList();
 	}
 	
@@ -115,5 +112,11 @@ public class ApplicationAction extends ActionSupport{
 		else
 			return "error";
 		
+	}
+	public Application getApplicationForm() {
+		return applicationForm;
+	}
+	public void setApplicationForm(Application applicationForm) {
+		this.applicationForm = applicationForm;
 	}
 }

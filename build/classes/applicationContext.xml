@@ -110,6 +110,13 @@
 		</property>
   	</bean>
   	
+  	<!-- 申请实体 -->
+  	<bean id="applicationDao" class="dao.imp.ApplicationDaoImp">
+  		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+  	</bean>
+  	
   	<!-- 用户处理器，处理有关用户信息相关事务 -->
   	<bean id="userService" class="service.imp.UserServiceImp">
   		<property name = "userDao">
@@ -144,6 +151,9 @@
   		</property>
   		<property name = "userDao">
   			<ref bean="userDao"/>
+  		</property>	
+  		<property name = "applicationDao">
+  			<ref bean="applicationDao"/>
   		</property>	
   	</bean>
   	

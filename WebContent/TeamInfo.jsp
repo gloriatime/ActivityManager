@@ -64,7 +64,7 @@
 	
 	</div>
 	
-	<hr class="major" />
+	 <hr class="major" />
 	
 	<h3>队伍动态 </h3>
 	
@@ -117,10 +117,11 @@
 	</s:url>
 	<s:a href="%{showApplicationForm_url}"> ~申请加入 ~</s:a>-->
 	
-	<s:form action="#">
-		<s:hidden name="team.Id"></s:hidden>
+	<s:form action="app_AddApplication">
+	
 		<div class="12u$">
-			<s:textarea name="#" rows="6" placeHolder="申请信息"></s:textarea>
+			<s:textarea name="applicationForm.content" rows="6" placeHolder="申请信息"></s:textarea>
+			<s:hidden name="team.Id"></s:hidden>
 		</div>
 		
 		<ul class="actions">

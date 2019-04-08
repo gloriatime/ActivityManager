@@ -34,42 +34,43 @@
 	
 	<div class="posts">
 	
-		<s:iterator  value="#session.appUserList" id="item">	
+		<s:iterator  value="#session.auditing_applications" id="item">	
 		
 		<s:url id="checkUser_url" action="show_ShowUserInfo" >
  
    				<s:param name="user.Id">
  
-    		  			<s:property value="Id"/>
+    		  			<s:property value="applicant_user.Id"/>
 
   			 	</s:param>
  
 		</s:url>
 		<s:url id="yesUser_url" action="app_ChangeToRegular" >
  
-   				<s:param name="user.Id">
+   				<s:param name="application.Id">
  
     		  			<s:property value="Id"/>
+
+  			 	</s:param>
+  			 	<s:param name="userTeam.team">
+ 
+    		  			<s:property value="team.Id"/>
 
   			 	</s:param>
 
 		</s:url>
 		<s:url id="noUser_url" action="app_ChangeToRefused" >
  
-   				<s:param name="userTeam.user">
+   				<s:param name="application.Id">
  
     		  			<s:property value="Id"/>
 
   			 	</s:param>
- 				<s:param name="userTeam.team">
- 				
-  			 		<s:property value="team.Id"/>
-  			 		
-  			 	</s:param>
+  			 	
 		</s:url>
 		
 		<article>
-			<p>申请人： <s:a href="%{checkUser_url}">  <s:property value="name"/></s:a> </p>
+			<p>申请人： <s:a href="%{checkUser_url}">  <s:property value="applicant_user.name"/></s:a> </p>
 			<p> 
 				<s:a href="%{yesUser_url}" cssClass="special"> 同意  </s:a>  
 				<s:a href="%{noUser_url}" cssClass="special"> 拒绝  </s:a>
