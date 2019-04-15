@@ -74,8 +74,28 @@ public class ApplicationServiceImp implements ApplicationService{
 	public void getApplicationsByApplicantId(int Id) {
 		// TODO Auto-generated method stub
 		applicationDao.getApplicationsByApplicantId(Id);
-		setApplicantUser();
+		setAppliedTeam();
 	}
+	private void setAppliedTeam() {
+		// TODO Auto-generated method stub
+		List<Application> list_accept = (List<Application>) ActionContext.getContext().getSession().get("accepted_applications");
+		for(Application a:list_accept) {
+			a.setApplied_team(teamDao.getTeamById(a.getTeam()));
+		}
+		List<Application> list_deny = (List<Application>) ActionContext.getContext().getSession().get("denied_applications");
+		for(Application a:list_deny) {
+			a.setApplied_team(teamDao.getTeamById(a.getTeam()));
+		}
+		List<Application> list_auditing = (List<Application>) ActionContext.getContext().getSession().get("auditing_applications");
+		for(Application a:list_auditing) {
+			a.setApplied_team(teamDao.getTeamById(a.getTeam()));
+		}
+		
+		ActionContext.getContext().getSession().put("denied_applications",list_deny);
+		ActionContext.getContext().getSession().put("auditing_applications",list_auditing);
+		ActionContext.getContext().getSession().put("accepted_applications",list_accept);
+	}
+	
 	@Override
 	public void getAppListByTeam(int teamId) {
 		// TODO Auto-generated method stub

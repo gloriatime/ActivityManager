@@ -11,6 +11,7 @@ public class Application {
 	private String state;
 	
 	private User applicant_user;
+	private Team applied_team;
 	
 	public int getId() {
 		return Id;
@@ -53,5 +54,11 @@ public class Application {
 	}
 	public void setApplicant_user(User applicant_user) {
 		this.applicant_user = applicant_user;
+	}
+	public Team getApplied_team() {
+		return applied_team;
+	}
+	public void setApplied_team(Team applied_team) {
+		this.applied_team = applied_team;
 	}
 }

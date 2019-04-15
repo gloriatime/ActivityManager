@@ -183,7 +183,7 @@
 	 		<article>
 	 			<div class="box">
 	 				<h3> <s:property value="date"/> </h3>
-	 				<p> …Í«Î∂”ŒÈ£∫<s:property value="team"/> </p>
+	 				<p> …Í«Î∂”ŒÈ£∫<s:property value="applied_team.name"/> </p>
 	 				<p> <s:property value="content"/> </p>
 	 				
 	 				<s:url id="checkTeam_url" action="show_ShowTeamInfo" >
@@ -244,7 +244,7 @@
 	 		<article>
 	 			<div class="box">
 	 				<h3> <s:property value="date"/> </h3>
-	 				<p> …Í«Î∂”ŒÈ£∫<s:property value="team"/> </p>
+	 				<p> …Í«Î∂”ŒÈ£∫<s:property value="applied_team.name"/> </p>
 	 				<p> <s:property value="content"/> </p>
 	 				
 	 				<s:url id="checkTeam_url" action="show_ShowTeamInfo" >
