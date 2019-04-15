@@ -96,13 +96,13 @@ public class CommentAction extends ActionSupport{
 		// Ã»µÇÂ½
 		if(user == null) return "error";
 		
-		activity = activityService.getActById(activity.getId());
 		comment.setBelong(activity.getId());
 		commentService.addComment(comment);
 		
 		user = userService.getUserById(activity.getOwner());
+		activity = activityService.getActById(activity.getId());
 		ActionContext.getContext().getSession().put("commentList", commentService.getCommentListByActId(activity.getId()));
-		
+		ActionContext.getContext().getSession().put("teamList",null);
 		return "add_comment_finish";
 	}
 	
