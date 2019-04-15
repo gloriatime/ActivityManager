@@ -65,11 +65,14 @@
 		</s:url>
 		
 		<article>
-			<p>申请人： <s:a href="%{checkUser_url}">  <s:property value="applicant_user.name"/></s:a> </p>
+			<p> <s:property value="date"/> </p>
+			<p> <s:property value="content"/> </p>
+			<p>BY <s:a href="%{checkUser_url}">  <s:property value="applicant_user.name"/></s:a> </p>
 			<p> 
 				<s:a href="%{yesUser_url}" cssClass="button"> 同意  </s:a>  
 				<s:a href="%{noUser_url}" cssClass="button"> 拒绝  </s:a>
 			</p>
+			
 		</article>
 
 		</s:iterator>

@@ -44,7 +44,7 @@ public class UserDaoImp  extends HibernateDaoSupport implements UserDao{
 
 		 if(list.size()>0) {
 			 User user = (User)list.get(0);
-			 System.out.println("byId------------------------"+user.getId()+user.getName());
+			 System.out.println("byId------------------------"+user.getId()+user.getName()+user.getMessage());
 			 return user;
 		 }
 			 

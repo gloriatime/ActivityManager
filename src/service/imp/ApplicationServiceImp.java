@@ -89,13 +89,17 @@ public class ApplicationServiceImp implements ApplicationService{
 			a.setApplicant_user(userDao.getUserById(a.getApplicant()));
 		}
 		List<Application> list_deny = (List<Application>) ActionContext.getContext().getSession().get("denied_applications");
-		for(Application a:list_accept) {
+		for(Application a:list_deny) {
 			a.setApplicant_user(userDao.getUserById(a.getApplicant()));
 		}
 		List<Application> list_auditing = (List<Application>) ActionContext.getContext().getSession().get("auditing_applications");
-		for(Application a:list_accept) {
+		for(Application a:list_auditing) {
 			a.setApplicant_user(userDao.getUserById(a.getApplicant()));
 		}
+		
+		ActionContext.getContext().getSession().put("denied_applications",list_deny);
+		ActionContext.getContext().getSession().put("auditing_applications",list_auditing);
+		ActionContext.getContext().getSession().put("accepted_applications",list_accept);
 	}
 
 }

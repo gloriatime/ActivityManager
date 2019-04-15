@@ -35,7 +35,7 @@
 				</div>
 					<s:hidden name="activity.Id"></s:hidden>
 				<ul>
-					<li><s:submit value="发表"></s:submit></li>
+					<s:submit value="发表"></s:submit>
 				</ul>
 				
 			</s:form>
