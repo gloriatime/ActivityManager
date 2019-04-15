@@ -211,6 +211,9 @@
 		<property name="teamService">
 			<ref bean="teamService"/>
 		</property>	
+		<property name="commentService">
+			<ref bean="commentService"/>
+		</property>	
 		<property name="applicationService">
 			<ref bean="applicationService"/>
 		</property>	

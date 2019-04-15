@@ -8,6 +8,7 @@ import model.Team;
 import model.User;
 import service.ActivityService;
 import service.ApplicationService;
+import service.CommentService;
 import service.TeamService;
 import service.UserService;
 
@@ -18,6 +19,7 @@ public class ShowAction extends ActionSupport{
 	Activity activity;
 	UserService userService;
 	TeamService teamService;
+	CommentService commentService;
 	ActivityService activityService;
 	ApplicationService applicationService;
 	
@@ -50,6 +52,12 @@ public class ShowAction extends ActionSupport{
 	}
 	public void setTeamService(TeamService teamService) {
     	this.teamService = teamService;
+	}
+	public CommentService getCommentService() {
+		return commentService;
+	}
+	public void setCommentService(CommentService commentService) {
+		this.commentService = commentService;
 	}
 	public ActivityService getActivityService() {
     	return activityService;
@@ -117,6 +125,7 @@ public class ShowAction extends ActionSupport{
 	public String ShowTeamInfo() {
 		
 		team = teamService.getTeamById(team.getId());
+		ActionContext.getContext().getSession().put("teamCommentList", commentService.getTeamCommentListByTeamId(team.getId()));
 		System.out.println("team.member----------------------------------------"+team.getMemberNum());
 		
 		return "teamInfo";
