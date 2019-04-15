@@ -39,7 +39,9 @@ public class TeamDaoImp extends HibernateDaoSupport implements TeamDao{
 
 		 if(list.size()>0) {
 
-			 return (Team)list.get(0);
+			 Team t = (Team)list.get(0);
+			 t.setMemberNum(t.getMemberList().size());
+			 return t;
 		 }else 
 			 return null;
 	}

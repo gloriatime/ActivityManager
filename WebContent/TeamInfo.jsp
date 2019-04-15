@@ -64,6 +64,36 @@
 	
 	</div>
 	
+	<hr class="major" />
+	
+	<h3>小队成员 </h3>
+	
+	<div class="posts">
+	
+	<s:iterator  value="team.memberList" id="item">
+	<article>
+	<div class="box">
+	
+		<s:url id="checkUser_url" action="show_ShowUserInfo" >
+ 
+   				<s:param name="user.Id">
+ 
+    		  			<s:property value="Id"/>
+
+  			 	</s:param>
+ 
+		</s:url>
+		<h3> <s:a href="%{checkUser_url}">  <s:property value="name"/></s:a> </h3>
+		
+			<p> <s:property value="message"/></p>
+			
+	</div>
+	</article>
+	
+	</s:iterator>
+	
+	</div>
+	
 	 <hr class="major" />
 	
 	<h3>队伍动态 </h3>

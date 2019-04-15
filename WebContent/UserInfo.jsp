@@ -38,9 +38,9 @@
 		
 				<h4>个人基本信息</h4>
 				<ul class="alt">
-					<li>年级：<s:property value="grade"/></li>
-					<li>专业：<s:property value="major"/></li>
-					<li>QQ：<s:property value="QQ"/></li>
+					<li>年级：<s:property value="user.grade"/></li>
+					<li>专业：<s:property value="user.major"/></li>
+					<li>QQ：<s:property value="user.QQ"/></li>
 				</ul>
 		
 			</div>
@@ -50,7 +50,7 @@
 	<div class="6u$ 12u$(medium)">
 		<div class="box">
 			<h3>个人宣言</h3>
-			<p><s:property value="message"/></p>
+			<p><s:property value="user.message"/></p>
 		</div>
 	</div>
 	
