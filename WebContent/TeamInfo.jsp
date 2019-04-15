@@ -84,10 +84,42 @@
 	
 	</div>
 	
-	<!-- 如果不是队员显示申请框，如果是队员显示发表动态框 -->
 	<hr class="major" />
 	
-	<h3>发表动态 </h3>
+	<!-- 如果不是队员显示申请框，如果是队员显示发表动态框 -->
+	<s:if test="#session.IsTeamMember == true">
+         <h3>发表动态 </h3>
+	
+		<s:form action="comment_AddTeamComment">
+		<s:hidden name="team.Id"></s:hidden>
+		<div class="12u$">
+			<s:textarea name="teamComment.content" rows="6" placeHolder="动态内容（提示：注意需要先登陆，否则跳转到出错提示后编辑的东西都没了哟~）"></s:textarea>
+		</div>
+		
+		<ul class="actions">
+			<li><s:submit value="发表"  cssClass="special" id="submit_button"></s:submit></li>
+		</ul>
+		
+		</s:form>
+	</s:if>
+	<s:else>
+		<h3>加入小队 </h3>
+	
+		<s:form action="app_AddApplication">
+	
+		<div class="12u$">
+			<s:textarea name="applicationForm.content" rows="6" placeHolder="申请信息（提示：注意需要先登陆，否则跳转到出错提示后编辑的东西都没了哟~）"></s:textarea>
+			<s:hidden name="team.Id"></s:hidden>
+		</div>
+		
+		<ul class="actions">
+			<li><s:submit value="申请加入"  cssClass="special" id="submit_button"></s:submit></li>
+		</ul>
+		
+		</s:form>
+	</s:else>
+	
+	<!--<h3>发表动态 </h3>
 	
 	<s:form action="comment_AddTeamComment">
 		<s:hidden name="team.Id"></s:hidden>
@@ -103,7 +135,7 @@
 	
 	<hr class="major" />
 	
-	<h3>加入小队 </h3>
+	<h3>加入小队 </h3>-->
 	
 	<!--<s:url id="showApplicationForm_url" action="app_AddApplication">
  
@@ -117,10 +149,10 @@
 	</s:url>
 	<s:a href="%{showApplicationForm_url}"> ~申请加入 ~</s:a>-->
 	
-	<s:form action="app_AddApplication">
+	<!--<s:form action="app_AddApplication">
 	
 		<div class="12u$">
-			<s:textarea name="applicationForm.content" rows="6" placeHolder="申请信息"></s:textarea>
+			<s:textarea name="applicationForm.content" rows="6" placeHolder="申请信息（提示：注意需要先登陆，否则跳转到出错提示后编辑的东西都没了哟~）"></s:textarea>
 			<s:hidden name="team.Id"></s:hidden>
 		</div>
 		
@@ -128,7 +160,7 @@
 			<li><s:submit value="申请加入"  cssClass="special" id="submit_button"></s:submit></li>
 		</ul>
 		
-	</s:form>
+	</s:form>-->
 	
 </section>
 

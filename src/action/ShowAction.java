@@ -123,11 +123,24 @@ public class ShowAction extends ActionSupport{
 	}
 	
 	public String ShowTeamInfo() {
+		User user = (User) ActionContext.getContext().getSession().get("user");
 		
 		team = teamService.getTeamById(team.getId());
 		ActionContext.getContext().getSession().put("teamCommentList", commentService.getTeamCommentListByTeamId(team.getId()));
 		System.out.println("team.member----------------------------------------"+team.getMemberNum());
 		
+		if(user ==null) {
+			ActionContext.getContext().getSession().put("IsTeamMember", false);
+			return "teamInfo";
+		}
+		
+		for(User u:team.getMemberList()) {
+			if(u.getId() == user.getId()) {
+				ActionContext.getContext().getSession().put("IsTeamMember", true);
+				return "teamInfo";
+			}
+		}
+		ActionContext.getContext().getSession().put("IsTeamMember", false);
 		return "teamInfo";
 	}
 	

@@ -117,6 +117,7 @@ public class CommentAction extends ActionSupport{
 		teamComment.setTeam(team.getId());
 		commentService.addTeamComment(teamComment);
 		ActionContext.getContext().getSession().put("teamCommentList", commentService.getTeamCommentListByTeamId(team.getId()));
+		ActionContext.getContext().getSession().put("IsTeamMember", true);
 		// 清理动态的值，防止表单被初始化
 		teamComment.setContent(null);
 		
