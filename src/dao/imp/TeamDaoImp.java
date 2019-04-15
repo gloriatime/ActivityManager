@@ -9,6 +9,8 @@ import com.opensymphony.xwork2.ActionContext;
 
 import dao.TeamDao;
 import model.Team;
+import model.User;
+import model.UserTeam;
 
 @Transactional(readOnly = false)
 public class TeamDaoImp extends HibernateDaoSupport implements TeamDao{

@@ -6,13 +6,12 @@
 <hibernate-mapping package="model">
 
      <class name="UserTeam" table="t_user_team" >
-        <id name="Id" type="int" column="Id">
-            
-        </id>
-
-        <property name="user" type="int" column="member" />
-        <property name="team" type="int" column="team" />
-		<property name="regular" type="int" column="regular" />
+       
+       <composite-id>
+       	<key-property name="user" type="int" column="member"></key-property>
+       	<key-property name="team" type="int" column="team"></key-property>
+       </composite-id>
+        
     </class>
     
     

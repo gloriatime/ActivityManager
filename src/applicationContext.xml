@@ -82,13 +82,6 @@
 		</property>
   	</bean>
   	
-  	<!-- 用户队伍关系实体 -->
-  	<bean id="userTeamDao" class="dao.imp.UserTeamDaoImp">
-  		<property name="sessionFactory">
-			<ref bean="sessionFactory" />
-		</property>
-  	</bean>
-  	
   	<!-- 活动队伍关系实体 -->
   	<bean id="actTeamDao" class="dao.imp.ActTeamDaoImp">
   		<property name="sessionFactory">
@@ -98,6 +91,13 @@
   	
   	<!-- 评论实体 -->
   	<bean id="commentDao" class="dao.imp.CommentDaoImp">
+  		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+  	</bean>
+  	
+  	<!-- 小队用户关系实体 -->
+  	<bean id="userTeamDao" class="dao.imp.UserTeamDaoImp">
   		<property name="sessionFactory">
 			<ref bean="sessionFactory" />
 		</property>
@@ -133,11 +133,11 @@
   	
   	<!--队伍处理器，处理有关队伍信息的相关事务 -->
   	<bean id="teamService" class="service.imp.TeamServiceImp">
+  		<property name = "userDao">
+  			<ref bean="userDao"/>
+  		</property>
   		<property name = "teamDao">
   			<ref bean="teamDao"/>
-  		</property>
-  		<property name = "userTeamDao">
-  			<ref bean="userTeamDao"/>
   		</property>
   		<property name = "actTeamDao">
   			<ref bean="actTeamDao"/>
@@ -146,11 +146,14 @@
   	
   	<!-- 申请处理器，处理用户组队申请相关事务 -->
   	<bean id="applicationService" class="service.imp.ApplicationServiceImp">
-  		<property name = "userTeamDao">
-  			<ref bean="userTeamDao"/>
+  		<property name = "teamDao">
+  			<ref bean="teamDao"/>
   		</property>
   		<property name = "userDao">
   			<ref bean="userDao"/>
+  		</property>	
+  		<property name = "userTeamDao">
+  			<ref bean="userTeamDao"/>
   		</property>	
   		<property name = "applicationDao">
   			<ref bean="applicationDao"/>
@@ -207,6 +210,9 @@
 		</property>	
 		<property name="teamService">
 			<ref bean="teamService"/>
+		</property>	
+		<property name="applicationService">
+			<ref bean="applicationService"/>
 		</property>	
      </bean>
      

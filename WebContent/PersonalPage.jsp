@@ -123,7 +123,7 @@
  
 					</s:url>
 
-					<p> <s:a href="%{checkTeam_url}"> 查看队伍详细信息 </s:a>
+					<p> <s:a href="%{checkTeam_url}" cssClass="button"> 查看队伍详细信息 </s:a>
 					
 					
 					<s:url id="checkAppList_url" action="app_ShowAppList" >
@@ -136,7 +136,7 @@
  
 					</s:url>
 		
-					<s:a href="%{checkAppList_url}"> 查看申请列表  </s:a>  </p>
+					<s:a href="%{checkAppList_url}" cssClass="button"> 查看申请列表  </s:a>  </p>
 				</div>
 	 		</article>
 	 	</s:iterator>
@@ -147,7 +147,7 @@
 	<h2>正在申请的小队</h2>
 	
 	 <div class="posts">
-	 	<s:iterator  value="#session.appTeamList" id="item">
+	 	<!--<s:iterator  value="#session.appTeamList" id="item">
 	 		<article>
 	 			<div class="box">
 					<h3> <s:property value="name"/> </h3>
@@ -178,15 +178,37 @@
 					<p> <s:a href="%{checkTeam_url}"> 查看队伍详细信息 </s:a>
 	 			</div>
 	 		</article>
+	 	</s:iterator>-->
+	 	<s:iterator  value="#session.auditing_applications" id="item">
+	 		<article>
+	 			<div class="box">
+	 				<h3> <s:property value="date"/> </h3>
+	 				<p> 申请队伍：<s:property value="team"/> </p>
+	 				<p> <s:property value="content"/> </p>
+	 				
+	 				<s:url id="checkTeam_url" action="show_ShowTeamInfo" >
+ 
+   							<s:param name="team.Id">
+ 
+    		  					<s:property value="team"/>
+
+  			 				</s:param>
+ 
+					</s:url>
+
+					<p> <s:a href="%{checkTeam_url}" cssClass="button"> 查看队伍详细信息 </s:a>
+	 				
+	 			</div>
+	 		</article>
 	 	</s:iterator>
 	 </div>
 	 
 	 <hr class="major" />
 	
-	<h2>被拒绝的小队</h2>
+	<h2>被拒绝的申请</h2>
 	
 	 <div class="posts">
-	 	<s:iterator  value="#session.failTeamList" id="item">
+	 	<!--<s:iterator  value="#session.failTeamList" id="item">
 	 		<article>
 	 			<div class="box">
 	 				<h3> <s:property value="name"/> </h3>
@@ -215,6 +237,28 @@
 					</s:url>
 
 					<p> <s:a href="%{checkTeam_url}"> 查看队伍详细信息 </s:a>
+	 			</div>
+	 		</article>
+	 	</s:iterator> -->
+	 	<s:iterator  value="#session.denied_applications" id="item">
+	 		<article>
+	 			<div class="box">
+	 				<h3> <s:property value="date"/> </h3>
+	 				<p> 申请队伍：<s:property value="team"/> </p>
+	 				<p> <s:property value="content"/> </p>
+	 				
+	 				<s:url id="checkTeam_url" action="show_ShowTeamInfo" >
+ 
+   							<s:param name="team.Id">
+ 
+    		  					<s:property value="team"/>
+
+  			 				</s:param>
+ 
+					</s:url>
+
+					<p> <s:a href="%{checkTeam_url}" cssClass="button"> 查看队伍详细信息 </s:a>
+	 				
 	 			</div>
 	 		</article>
 	 	</s:iterator>

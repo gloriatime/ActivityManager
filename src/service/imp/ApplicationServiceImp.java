@@ -16,8 +16,9 @@ import service.ApplicationService;
 public class ApplicationServiceImp implements ApplicationService{
 	
 	private UserDao userDao;
+	private UserTeamDao userTeamDao;
 	private ApplicationDao applicationDao;
-	UserTeamDao userTeamDao;
+	private TeamDao teamDao;
 	
 	public void setUserDao(UserDao userDao) {
 		this.userDao = userDao;
@@ -25,11 +26,17 @@ public class ApplicationServiceImp implements ApplicationService{
 	public UserDao getUserDao() {
 		return userDao;
 	}
+	public UserTeamDao getUserTeamDao() {
+		return userTeamDao;
+	}
 	public void setUserTeamDao(UserTeamDao userTeamDao) {
 		this.userTeamDao = userTeamDao;
 	}
-	public UserTeamDao  getUserTeamDao() {
-		return userTeamDao;
+	public void setTeamDao(TeamDao teamDao) {
+		this.teamDao = teamDao;
+	}
+	public TeamDao  getTeamDao() {
+		return teamDao;
 	}	
 	public ApplicationDao getApplicationDao() {
 		return applicationDao;
@@ -46,9 +53,14 @@ public class ApplicationServiceImp implements ApplicationService{
 	
 	// 此处application只需要有Id传入
 	@Override
-	public void acceptApplication(UserTeam userTeam, Application application) {
+	public void acceptApplication(Application application) {
 		// TODO Auto-generated method stub
-		userTeamDao.addRelation(userTeam.getUser(), userTeam.getTeam(), 0);
+		
+		application = applicationDao.getApplicationById(application.getId());
+		UserTeam ut = new UserTeam();
+		ut.setTeam(application.getTeam());
+		ut.setUser(application.getApplicant());
+		userTeamDao.addMember(ut);
 		application.setState("accept");
 		applicationDao.changeState(application);
 	}

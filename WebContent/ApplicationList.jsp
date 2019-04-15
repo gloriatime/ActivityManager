@@ -47,21 +47,16 @@
 		</s:url>
 		<s:url id="yesUser_url" action="app_ChangeToRegular" >
  
-   				<s:param name="application.Id">
+   				<s:param name="applicationForm.Id">
  
     		  			<s:property value="Id"/>
-
-  			 	</s:param>
-  			 	<s:param name="userTeam.team">
- 
-    		  			<s:property value="team.Id"/>
 
   			 	</s:param>
 
 		</s:url>
 		<s:url id="noUser_url" action="app_ChangeToRefused" >
  
-   				<s:param name="application.Id">
+   				<s:param name="applicationForm.Id">
  
     		  			<s:property value="Id"/>
 
@@ -72,8 +67,8 @@
 		<article>
 			<p>申请人： <s:a href="%{checkUser_url}">  <s:property value="applicant_user.name"/></s:a> </p>
 			<p> 
-				<s:a href="%{yesUser_url}" cssClass="special"> 同意  </s:a>  
-				<s:a href="%{noUser_url}" cssClass="special"> 拒绝  </s:a>
+				<s:a href="%{yesUser_url}" cssClass="button"> 同意  </s:a>  
+				<s:a href="%{noUser_url}" cssClass="button"> 拒绝  </s:a>
 			</p>
 		</article>
 

@@ -28,7 +28,7 @@ public class ApplicationDaoImp extends HibernateDaoSupport implements Applicatio
 	public void changeState(Application application) {
 		// TODO Auto-generated method stub
 		String newState = application.getState();
-		application = (Application) getHibernateTemplate().find("from Application where Id=?0",application.getId());
+		application = (Application) getHibernateTemplate().find("from Application where Id=?0",application.getId()).get(0);
 		application.setState(newState);
 		getHibernateTemplate().update(application);
 	}
@@ -53,6 +53,12 @@ public class ApplicationDaoImp extends HibernateDaoSupport implements Applicatio
 		ActionContext.getContext().getSession().put("denied_applications",list_deny);
 		List<Application> list_auditing = (List<Application>) getHibernateTemplate().find("from Application where applicant=?0 and state='auditing'",Id);
 		ActionContext.getContext().getSession().put("auditing_applications",list_auditing);
+	}
+
+	@Override
+	public Application getApplicationById(int Id) {
+		// TODO Auto-generated method stub
+		return (Application) getHibernateTemplate().find("from Application where Id=?0",Id).get(0);
 	}
 
 }

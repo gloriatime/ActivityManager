@@ -15,6 +15,15 @@
         <property name="message" type="string" column="message" />
         <property name="grade" type="string" column="grade" />  
         
+        <set name="teamList" table="t_user_team" lazy="false">
+         <key column="member"></key>
+         <many-to-many column="team" class="Team"></many-to-many>
+        </set>
+        <set name="applicationList" lazy="false">
+        	<key column="applicant"></key>
+        	<one-to-many class="Application"></one-to-many>
+        </set>
+        
     </class>
     
     

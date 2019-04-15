@@ -7,6 +7,7 @@ import model.Activity;
 import model.Team;
 import model.User;
 import service.ActivityService;
+import service.ApplicationService;
 import service.TeamService;
 import service.UserService;
 
@@ -18,6 +19,7 @@ public class ShowAction extends ActionSupport{
 	UserService userService;
 	TeamService teamService;
 	ActivityService activityService;
+	ApplicationService applicationService;
 	
 	 public User getUser() {
 	    	return user;
@@ -54,6 +56,12 @@ public class ShowAction extends ActionSupport{
 	}
 	public void setActivityService(ActivityService activityService) {
     	this.activityService = activityService;
+	}
+	public ApplicationService getApplicationService() {
+    	return applicationService;
+	}
+	public void setApplicationService(ApplicationService applicationService) {
+    	this.applicationService = applicationService;
 	}
 	
 	// 展示主页的活动列表
@@ -122,9 +130,8 @@ public class ShowAction extends ActionSupport{
 		if(user == null) return "error";
 				
 		activityService.getActByOwnder(user.getId());
-		teamService.getTeamByOwner(user.getId(),0);
-		teamService.getTeamByOwner(user.getId(),1);
-		teamService.getTeamByOwner(user.getId(),2);
+		teamService.getTeamByOwner(user.getId());
+		applicationService.getApplicationsByApplicantId(user.getId());
 		return "personalPage";
 	}
 	

@@ -17,7 +17,6 @@ public class ApplicationAction extends ActionSupport{
 	private Team team;
 	private User user;
 	private Answer answer;
-	private UserTeam userTeam;
 	private Application applicationForm;
 	private UserService userService;
 	private TeamService teamService;
@@ -31,12 +30,6 @@ public class ApplicationAction extends ActionSupport{
 	 public Team getTeam() {
 	    	return team;
 	 }
-	public void setUserTeam(UserTeam userTeam) {
-	    	this.userTeam = userTeam;
-	}
-	public UserTeam getUserTeam() {
-    	return userTeam;
-	}
 	public void setTeam(Team team) {
     	this.team = team;
 	}
@@ -45,6 +38,12 @@ public class ApplicationAction extends ActionSupport{
 	}
 	public void setAnswer(Answer answer) {
     	this.answer = answer;
+	}
+	public Application getApplicationForm() {
+		return applicationForm;
+	}
+	public void setApplicationForm(Application applicationForm) {
+		this.applicationForm = applicationForm;
 	}
 	public TeamService getTeamService() {
     	return teamService;
@@ -89,9 +88,7 @@ public class ApplicationAction extends ActionSupport{
 	
 	public String ChangeToRegular() {
 		
-		User user = (User) ActionContext.getContext().getSession().get("user");	
-		userTeam.setUser(user.getId());
-		applicationService.acceptApplication(userTeam, applicationForm);
+		applicationService.acceptApplication(applicationForm);
 		return ShowAppList();
 	}
 	
@@ -112,11 +109,5 @@ public class ApplicationAction extends ActionSupport{
 		else
 			return "error";
 		
-	}
-	public Application getApplicationForm() {
-		return applicationForm;
-	}
-	public void setApplicationForm(Application applicationForm) {
-		this.applicationForm = applicationForm;
 	}
 }

@@ -10,7 +10,7 @@ public interface ApplicationService {
 	public void addApplication(Application application);
 	
 	// 申请成功成为正式成员
-	public void acceptApplication(UserTeam userTeam, Application application);
+	public void acceptApplication(Application application);
 	
 	// 申请被拒绝了
 	//public void changeToRefused(UserTeam userTeam);

@@ -4,6 +4,7 @@ import java.util.List;
 
 import model.Team;
 import model.TeamComment;
+import model.UserTeam;
 
 public interface TeamDao {
 	

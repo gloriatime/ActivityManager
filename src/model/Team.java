@@ -1,5 +1,8 @@
 package model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Team {
 	private int Id;
 	private String QQ;
@@ -9,6 +12,8 @@ public class Team {
 	private int leader;
 	private String message;
 	private int visible;
+	
+	private Set<User> memberList = new HashSet<User>(); 
 	
 	public int getId() {
 		return Id;
@@ -57,5 +62,12 @@ public class Team {
 	}
 	public void setVisible(int visible) {
 		this.visible = visible;
+	}
+
+	public Set<User> getMemberList() {
+		return memberList;
+	}
+	public void setMemberList(Set<User> memberList) {
+		this.memberList = memberList;
 	}
 }

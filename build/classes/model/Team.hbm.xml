@@ -16,6 +16,12 @@
         <property name="QQ" type="string" column="QQ" />
          <property name="message" type="string" column="message" />
         <property name="state" type="int" column="state" />
+        
+        <set name="memberList" table="t_user_team" lazy="false">
+         <key column="team"></key>
+         <many-to-many column="member" class="User"></many-to-many>
+        </set>
+        
     </class>
     
     

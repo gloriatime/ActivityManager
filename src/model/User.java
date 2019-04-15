@@ -15,6 +15,9 @@ public class User implements Serializable{
 	private String QQ;
 	private String message;
 	
+	private Set<Team> teamList = new HashSet<Team>();
+	private Set<Application> applicationList = new HashSet<Application>();
+	
 	public String getName() {
 		return name;
 	}
@@ -62,6 +65,18 @@ public class User implements Serializable{
 	}
 	public void setId(int id) {
 		Id = id;
+	}
+	public Set<Team> getTeamList() {
+		return teamList;
+	}
+	public void setTeamList(Set<Team> teamList) {
+		this.teamList = teamList;
+	}
+	public Set<Application> getApplicationList() {
+		return applicationList;
+	}
+	public void setApplicationList(Set<Application> applicationList) {
+		this.applicationList = applicationList;
 	}
 
 }
