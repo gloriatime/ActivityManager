@@ -61,11 +61,44 @@
 	<h2>ta参与的小队</h2>
 	
 	 <div class="posts">
-	 	<article>
-	 		<div class="box">
-	 		</div>
-	 	</article>
-	 </div>
+	 	<s:iterator  value="user.teamList" id="item">
+			<article>
+				<div class="box">
+					<h3> <s:property value="name"/> </h3>
+		
+					<p>队伍宣言： <s:property value="message"/></p>
+					<p>队伍状态 
+		
+					<s:if test="state == 0">
+					招聘队员中。。。
+					</s:if>
+					<s:else>
+					不好意思，我们满员了。O(∩_∩)O
+					</s:else>
+		
+					</p>
+		
+					<s:if test="visible == 1">
+			
+					<p>
+					<s:url id="checkTeam_url" action="show_ShowTeamInfo" >
+ 
+   							<s:param name="team.Id">
+ 
+    		  					<s:property value="Id"/>
+
+  			 				</s:param>
+ 
+					</s:url>
+
+					<s:a href="%{checkTeam_url}" cssClass="button"> 查看队伍详细信息 </s:a>
+					</p>
+					</s:if>
+				</div>
+			</article>
+	
+		</s:iterator>
+	</div>
 	
 </section>
 
