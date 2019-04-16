@@ -68,5 +68,10 @@
         	<result name="show_comments">/ActivityInfo.jsp</result>
         	<result name="show_comment_form">/AddComment.jsp</result>
         </action>
+        
+        <action name="admin_*" class="adminAction" method="{1}">
+        	<result name="admin_page">/AdminPage.jsp</result>
+
+        </action>
     </package>
 </struts>

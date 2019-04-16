@@ -117,6 +117,13 @@
 		</property>
   	</bean>
   	
+  	<!-- 统计页面使用结构 -->
+  	<bean id="adminPageDao" class="dao.imp.AdminPageDaoImp">
+  		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+  	</bean>
+  	
   	<!-- 用户处理器，处理有关用户信息相关事务 -->
   	<bean id="userService" class="service.imp.UserServiceImp">
   		<property name = "userDao">
@@ -173,6 +180,13 @@
   		</property>	
   		<property name = "activityDao">
   			<ref bean="activityDao"/>
+  		</property>
+  	</bean>
+  	
+  	<!-- 管理员处理器，处理管理员相关事务 -->
+  	<bean id="adminService" class="service.imp.AdminServiceImp">
+  		<property name = "adminPageDao">
+  			<ref bean="adminPageDao"/>
   		</property>
   	</bean>
   	
@@ -246,6 +260,13 @@
 		<property name="teamService">
 			<ref bean="teamService"/>
 		</property>
+     </bean>
+     
+     <!-- 管理员活动，处理管理员相关请求 -->
+     <bean id="adminAction" class="action.AdminAction">
+     	<property name="adminService">
+			<ref bean="adminService"/>
+		</property>	
      </bean>
      
  </beans>

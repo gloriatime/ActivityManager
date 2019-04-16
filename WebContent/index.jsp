@@ -29,11 +29,15 @@
 
 
 <header id="header">
-	<a href="index.html" class="logo"><strong>东华活动站</strong> 开启你的快乐之行</a>
+	<a href="index.jsp" class="logo"><strong>东华活动站</strong> 开启你的快乐之行</a>
 	<ul class="icons">
 		<li><a href="UserLogin.jsp" ><span class="label">登陆</span></a></li>
 		<li><a href="UserRegister.jsp" ><span class="label">注册</span></a></li>
 		<li><a href="AdminTest.jsp" ><span class="label">成为管理员</span></a></li>
+		<s:if test="#session.user.isAdmin == 1">
+			<s:url id="showAdminPage_url" action="admin_showAdminPage"></s:url>
+			<li><s:a href="%{showAdminPage_url}" ><span class="label">站点统计信息</span></s:a></li>
+		</s:if>
 		<li><a href="publishAct.jsp"><span class="label">发布活动</span></a></li>
         <s:url id="showPersonalPage_url" action="show_ShowPersonalPage"></s:url>
 		<li><s:a href="%{showPersonalPage_url}"><span class="label">我的账户</span></s:a></li>
