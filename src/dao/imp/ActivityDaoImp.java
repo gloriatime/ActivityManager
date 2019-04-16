@@ -30,6 +30,7 @@ public class ActivityDaoImp extends HibernateDaoSupport implements ActivityDao{
 		act.setName(activity.getName());
 		act.setTeamNum(activity.getTeamNum());
 		act.setWarning(activity.getWarning());
+		act.setImg(activity.getImg());
 		act.setOwner(user.getId());
 
 		getHibernateTemplate().save(act);

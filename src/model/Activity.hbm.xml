@@ -19,6 +19,7 @@
         <property name="content" type="string" column="content" />
         <property name="warning" type="string" column="warning" />
         <property name="owner" type="int" column="owner" />
+        <property name="img" type="string" column="img" />
     </class>
     
     

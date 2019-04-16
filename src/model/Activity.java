@@ -1,6 +1,9 @@
 package model;
 
+import java.io.File;
 import java.sql.Date;
+
+import org.springframework.web.multipart.MultipartFile;
 
 public class Activity {
 	private int Id;
@@ -14,7 +17,18 @@ public class Activity {
 	private String content;
 	private String warning;
 	private int owner;
+	private String img;
 	
+	private File image;
+	 
+	
+	public File getImage() {
+	    return image;
+	}
+	 
+	public void setImage(File image) {
+	   this.image = image;
+	}
 	public int getId() {
 		return Id;
 	}
@@ -82,5 +96,13 @@ public class Activity {
 	}
 	public void setOwner(int owner) {
 		this.owner = owner;
+	}
+
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
 	}
 }

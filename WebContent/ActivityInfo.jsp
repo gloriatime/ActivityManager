@@ -29,7 +29,16 @@
 		<h1><s:property value="activity.name"/></h1>
 	</header>
 	
-	<span class="image right"><img src="img/bg.jpg" alt="" /></span>
+	<span class="image right">
+
+					<s:if test="activity.img!=null">
+						<img src="image/${activity.img}" alt="" height="300" width="450"/>
+					</s:if>
+					<s:else>
+						<img src="img/bg.jpg" alt="" />
+					</s:else>
+
+	</span>
 	
 	<dl>
 		<dt>发布人：</dt>

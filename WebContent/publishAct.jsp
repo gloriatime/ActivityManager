@@ -46,7 +46,7 @@ dojo.addOnLoad(function(){
             <a href="index.jsp">喏~回主页的链接</a> 
 		</s:if>
 		<s:else>
-			<s:form action="publish_PublishAct" method="post" accept-charset="UTF-8" theme="simple">
+			<s:form action="publish_PublishAct" method="post" accept-charset="UTF-8"  enctype="multipart/form-data" theme="simple">
 				<div class="field">
 					<s:textfield name="activity.name" placeholder="活动名称" lable=""></s:textfield>
 				</div>
@@ -73,6 +73,11 @@ dojo.addOnLoad(function(){
  				<div class="field">	
  					<s:textarea name="activity.content" placeholder="活动介绍" lable="" rows="8"></s:textarea>
  				</div>
+ 				<div class="field">
+ 					<p>选择活动宣传图</p>
+ 					<s:file name="activity.image" accept="image/*"></s:file>
+ 				</div>
+ 				
  				<ul class="actions">
  					<li><s:submit key="button" value="提交"></s:submit></li>
  				</ul>

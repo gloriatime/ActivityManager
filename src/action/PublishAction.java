@@ -1,5 +1,13 @@
 package action;
 
+import java.io.File;
+import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.*;
+import org.apache.struts2.ServletActionContext;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -43,6 +51,25 @@ public class PublishAction extends ActionSupport{
 	}
 	
 	public String PublishAct() {
+		
+		//  如果有宣传图，将宣传图保存
+		if(activity.getImage()!=null) {
+			System.out.println("有图！！！！！！！！！！！！！！！！！！！！！");
+			 String name = RandomStringUtils.randomAlphanumeric(10);
+		     String newFileName = name + ".jpg";
+		     File newFile = new File(ServletActionContext.getServletContext().getRealPath("/image"), newFileName);
+		     newFile.getParentFile().mkdirs();
+		     File f = activity.getImage();
+		     try {
+		    	 FileUtils.copyFile(f, newFile);
+			} catch (IllegalStateException | IOException e) {
+				e.printStackTrace();
+			}
+		     activity.setImg(newFileName);
+		     System.out.println("图片地址："+newFileName);
+		}
+		
+		
 		activityService.addAct(activity);
 		//new ShowAction().ShowActivity();
 		activityService.getActByTime(1);
