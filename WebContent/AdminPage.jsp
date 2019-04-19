@@ -109,7 +109,14 @@
   			 		</s:param>
 				</s:url>
 					
-				<s:a href="%{checkAct_url}" cssClass="image"><img src="img/bg.jpg" alt="" /></s:a>
+				<s:a href="%{checkAct_url}" cssClass="image">
+					<s:if test="img!=null">
+						<img src="image/${img}" alt="" />
+					</s:if>
+					<s:else>
+						<img src="img/bg.jpg" alt="" />
+					</s:else>
+				</s:a>
             	<h3> <s:property value="name"/> </h3>
 				<p> 开始时间：<s:property value="begin"/> </p>
                 <p> 结束时间：<s:property value="end"/> </p>

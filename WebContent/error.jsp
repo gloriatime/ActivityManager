@@ -28,7 +28,7 @@
 		3. 可能是崩了，重新登录再试试。抱歉。<br><br>		
 		</p>
 		
-		<p>奉上<a herf="index.jsp">🔯 回主页的传送阵 🔯</a></p>
+		<p>奉上<a href="index.jsp">🔯 回主页的传送阵 🔯</a></p>
 		
 			
 	</section>

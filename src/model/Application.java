@@ -8,7 +8,7 @@ public class Application {
 	private int applicant;
 	private String content;
 	private Date date = new Date();
-	private String state;
+	private String state = "auditing";
 	
 	private User applicant_user;
 	private Team applied_team;
