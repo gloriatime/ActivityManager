@@ -13,7 +13,12 @@
 <header id="header">
 	<a href="index.jsp" class="logo"><strong>东华活动站</strong> 开启你的快乐之行</a>
 	<ul class="icons">
-		<li><a href="UserLogin.jsp" ><span class="label">登陆</span></a></li>
+		<s:if test="#session.user == null">
+            <li><a href="UserLogin.jsp" ><span class="label">登陆</span></a></li> 
+		</s:if>
+		<s:else>
+			<li><span class="label">欢迎你，<s:property value="#session.user.name"/></span></li> 
+		</s:else>
 		<li><a href="UserRegister.jsp" ><span class="label">注册</span></a></li>
 		<li><a href="AdminTest.jsp" ><span class="label">成为管理员</span></a></li>
 		<li><a href="publishAct.jsp"><span class="label">发布活动</span></a></li>

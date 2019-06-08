@@ -21,8 +21,13 @@
 		
 		<h2>成为管理员测试</h2>
 			<s:if test="#session.user == null">
-            	登陆了吗？就想成为管理员？ <a href="index.jsp">喏~回主页的链接</a> 
+            	<p>登陆了吗？就想成为管理员？</p>
+            	<a href="index.jsp">喏~回主页的链接</a> 
 			</s:if>
+			<s:elseif test="#session.user.isAdmin == true">
+				<p>你已经是管理员了。</p>
+				<a href="index.jsp">喏~回主页的链接</a>
+			</s:elseif>
 			<s:else>
 				<s:form  action="app_AdminTest" method="post" theme="simple">
 					<div class="field">

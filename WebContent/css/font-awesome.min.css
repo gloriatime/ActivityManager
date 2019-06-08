@@ -55,7 +55,7 @@
 	   .fa-stack-1x{line-height:inherit}
 	   .fa-stack-2x{font-size:2em}
 	   .fa-inverse{color:#fff}
-	   .fa-diamond:before{content:"\f075"}
+	   .fa-diamond:before{content:"\f062"}
 	   .fa-short-activity:before{content:"\f0c0"}
 	   .fa-long-activity:before{content:"\f0a1"}
 	   .fa-sport-activity:before{content:"\f1ae"}
@@ -63,6 +63,7 @@
 	   .fa-play-activity:before{content:"\f118"}
 	   .fa-party-activity:before{content:"\f19c"}
 	   .fa-other-activity:before{content:"\f1d8"}
+	   .fa-up:before{content:"\f062"}
 	   
 	   .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);border:0}
 	   .sr-only-focusable:active,.sr-only-focusable:focus{

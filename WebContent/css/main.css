@@ -4068,3 +4068,8 @@
 	#submit_button,#change_content,#big_title{
 		margin-top:30px;
 	}
+	
+	#backTopButton .icon:after{
+		color:#fff;
+	}
+	

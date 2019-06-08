@@ -106,7 +106,7 @@ public class ShowAction extends ActionSupport{
 		// Ã»µÇÂ½
 		if(user == null) return "error";
 		activity = activityService.getActById(activity.getId());
-		
+		team = null;
 		return "teamForm";
 	}
 	
