@@ -12,5 +12,6 @@ public interface TeamDao {
 	
 	public Team getTeamById(int Id);
 	
+	public void update(Team team);
 	
 }

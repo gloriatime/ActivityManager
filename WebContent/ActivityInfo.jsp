@@ -137,12 +137,17 @@
 		
 			<p>队伍宣言： <s:property value="message"/></p>
 			<p>队伍状态 
-		
-				<s:if test="state == 0">
-					招聘队员中。。。
+			
+				<s:if test="team.QQ == '该队伍已解散'">
+					该队伍已解散
 				</s:if>
 				<s:else>
-					不好意思，我们满员了。O(∩_∩)O
+					<s:if test="state == 0">
+						招聘队员中。。。
+					</s:if>
+					<s:else>
+						不好意思，我们满员了。O(∩_∩)O
+					</s:else>
 				</s:else>
 		
 			</p>

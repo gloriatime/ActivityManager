@@ -85,5 +85,17 @@ public class TeamServiceImp implements TeamService{
 	public Team getTeamById(int Id) {
 		return teamDao.getTeamById(Id);
 	}
+	@Override
+	public void updateTeam(Team team) {
+		// TODO Auto-generated method stub
+		teamDao.update(team);
+	}
+	@Override
+	public void delete(Team team) {
+		// TODO Auto-generated method stub
+		team = teamDao.getTeamById(team.getId());
+		team.setQQ("该队伍已解散");
+		teamDao.update(team);
+	}
 
 }

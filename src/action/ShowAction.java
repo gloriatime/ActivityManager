@@ -163,4 +163,16 @@ public class ShowAction extends ActionSupport{
 		
 		return "userInfo";
 	}
+	
+	public String showActNeededFix() {
+		int Id = activity.getId();
+		activity = activityService.getActById(Id);
+		activity.setId(Id);
+		return "actNeededFix";
+	}
+	
+	public String showTeamNeededFix() {
+		team = teamService.getTeamById(team.getId());
+		return "teamNeededFix";
+	}
 }

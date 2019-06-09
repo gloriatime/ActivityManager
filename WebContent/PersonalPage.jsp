@@ -83,7 +83,11 @@
     		  			<s:property value="Id"/>
   			 		</s:param>
 				</s:url>
-					
+				<s:url id="fixAct_url" action="show_showActNeededFix" >
+   					<s:param name="activity.Id">
+    		  			<s:property value="Id"/>
+  			 		</s:param>
+				</s:url>
 				<s:a href="%{checkAct_url}" cssClass="image">
 					<s:if test="img!=null">
 						<img src="image/${img}" alt="" />
@@ -97,6 +101,7 @@
                 <p> 结束时间：<s:property value="end"/> </p>
 				<ul class="actions">
 					<li><s:a href="%{checkAct_url}" cssClass="button">查看更多</s:a></li>
+					<li><s:a href="%{fixAct_url}">修改</s:a></li>
 				</ul>
 	 		</article>
 	 	</s:iterator>
@@ -115,17 +120,40 @@
 					<p>队伍宣言： <s:property value="message"/></p>
 					<p>队伍状态 
 		
-						<s:if test="state == 0">
-						招聘队员中。。。
+						<s:if test="QQ == '该队伍已解散' ">
+							该队伍已解散
 						</s:if>
 						<s:else>
-						不好意思，我们满员了。O(∩_∩)O
+							<s:if test="state == 0">
+								招聘队员中。。。
+							</s:if>
+							<s:else>
+								不好意思，我们满员了。O(∩_∩)O
+							</s:else>
 						</s:else>
 		
 					</p>
 
 			
 					<s:url id="checkTeam_url" action="show_ShowTeamInfo" >
+ 
+   							<s:param name="team.Id">
+ 
+    		  					<s:property value="Id"/>
+
+  			 				</s:param>
+ 
+					</s:url>
+					<s:url id="fixTeam_url" action="show_showTeamNeededFix" >
+ 
+   							<s:param name="team.Id">
+ 
+    		  					<s:property value="Id"/>
+
+  			 				</s:param>
+ 
+					</s:url>
+					<s:url id="dissolveTeam_url" action="manage_DissolveTeam" >
  
    							<s:param name="team.Id">
  
@@ -149,6 +177,18 @@
 					</s:url>
 		
 					<s:a href="%{checkAppList_url}" cssClass="button"> 查看申请列表  </s:a>  </p>
+					
+					<s:if test="QQ != '该队伍已解散' ">
+
+						<s:a href="%{fixTeam_url}">修改</s:a>
+						<s:iterator  value="#session.user" id="item">
+							<s:if test="leader == #session.user.Id">
+								<b>&nbsp;&nbsp;</b><s:a href="%{dissolveTeam_url}">一键解散</s:a>
+							</s:if>
+						</s:iterator>
+						
+					</s:if>
+					
 				</div>
 	 		</article>
 	 	</s:iterator>

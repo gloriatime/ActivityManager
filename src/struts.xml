@@ -48,6 +48,8 @@
             <result name="actInfo">/ActivityInfo.jsp</result>
             <result name="userInfo">/UserInfo.jsp</result>
             <result name="personalPage">/PersonalPage.jsp</result>
+            <result name="actNeededFix">/FixAct.jsp</result>
+            <result name="teamNeededFix">/FixTeam.jsp</result>
 			<result name="error">/error.jsp</result>
 			<result name="input">/error.jsp</result>
 			
@@ -73,5 +75,12 @@
         	<result name="admin_page">/AdminPage.jsp</result>
 
         </action>
+        
+        <action name="manage_*" class="manageAction" method="{1}">
+        	<result name="manage_fixAct" type="redirectAction">show_ShowActInfo</result>
+        	<result name="manage_fixTeam" type="redirectAction">show_ShowTeamInfo</result>
+        	<result name="manage_dissolveTeam" type="redirectAction">show_ShowTeamInfo</result>
+        </action>
+        
     </package>
 </struts>

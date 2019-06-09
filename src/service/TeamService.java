@@ -12,5 +12,9 @@ public interface TeamService{
 	
 	public Team getTeamById(int Id);
 
-	void getTeamByOwner(int ownerId);
+	public void getTeamByOwner(int ownerId);
+	
+	public void updateTeam(Team team);
+	
+	public void delete(Team team);
 }

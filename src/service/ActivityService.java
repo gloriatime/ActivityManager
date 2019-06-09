@@ -24,4 +24,5 @@ public interface ActivityService {
 	public void updateTeamNum(int actId);
 	// 更新活动内容
 	public void updateAct(Activity activity);
+	
 }

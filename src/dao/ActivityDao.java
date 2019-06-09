@@ -22,4 +22,5 @@ public interface ActivityDao {
 	
 	// 更新活动内容
 	public void updateAct(Activity activity);
+	
 }

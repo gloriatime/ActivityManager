@@ -269,4 +269,14 @@
 		</property>	
      </bean>
      
+     <!-- 管理活动，修改删除活动和小队 -->
+     <bean id="manageAction" class="action.ManageAction">
+     	<property name="activityService">
+			<ref bean="activityService"/>
+		</property>	
+		<property name="teamService">
+			<ref bean="teamService"/>
+		</property>
+     </bean>
+     
  </beans>

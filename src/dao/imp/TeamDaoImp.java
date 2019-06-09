@@ -46,5 +46,12 @@ public class TeamDaoImp extends HibernateDaoSupport implements TeamDao{
 			 return null;
 	}
 
+	@Override
+	public void update(Team team) {
+		// TODO Auto-generated method stub
+		getHibernateTemplate().update(team);
+	}
+
+
 
 }
