@@ -4069,7 +4069,12 @@
 		margin-top:30px;
 	}
 	
-	#backTopButton .icon:after{
-		color:#fff;
+	#backTopButton{
+		text-decoration: none; 
+		color:rgba(0,0,0,0); 
+	}
+	#backTopButton :hover{
+		text-decoration: none; 
+		color:rgba(0,0,0,0); 
 	}
 	

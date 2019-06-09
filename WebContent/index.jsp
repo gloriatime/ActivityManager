@@ -29,7 +29,10 @@
 
 
 <header id="header">
+	
+	<s:url id="showIndexPage_url" action="show_ShowActivity"></s:url>
 	<a href="index.jsp" class="logo"><strong>东华活动站</strong> 开启你的快乐之行</a>
+	
 	<ul class="icons">
 		<s:if test="#session.user == null">
             <li><a href="UserLogin.jsp" ><span class="label">登陆</span></a></li> 
@@ -38,6 +41,7 @@
 			<li><span class="label">欢迎你，<s:property value="#session.user.name"/></span></li> 
 		</s:else>
 		<li><a href="UserRegister.jsp" ><span class="label">注册</span></a></li>
+		<li><s:a href="%{showIndexPage_url}" ><span class="label">刷新</span></s:a></li>	
 		<li><a href="AdminTest.jsp" ><span class="label">成为管理员</span></a></li>
 		<s:if test="#session.user.isAdmin == 1">
 			<s:url id="showAdminPage_url" action="admin_showAdminPage"></s:url>
@@ -55,7 +59,7 @@
 	<table width="100%" style="position: absolute; width:260px; right: 0px; top: 0px;">
 		<div class="features">
 		<article>
-			<a href="#top"><span class="icon fa-diamond" id="backTopButton"></span></a>
+			<a href="#top" id="backTopButton" style="text-decoration: none; color:rgba(0,0,0,0);"><span class="icon fa-diamond" id="backTopButton"></span></a>
 		</article>
 		</div>
 	</table>
