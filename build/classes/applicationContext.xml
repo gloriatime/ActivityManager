@@ -277,6 +277,9 @@
 		<property name="teamService">
 			<ref bean="teamService"/>
 		</property>
+		<property name="userService">
+			<ref bean="userService"/>
+		</property>	
      </bean>
      
  </beans>

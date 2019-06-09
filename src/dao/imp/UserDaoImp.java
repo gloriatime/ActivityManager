@@ -60,4 +60,16 @@ public class UserDaoImp  extends HibernateDaoSupport implements UserDao{
 		user.setIsAdmin(true);
 		getHibernateTemplate().update(user);
 	}
+
+
+	@Override
+	public void update(User user) {
+		// TODO Auto-generated method stub
+		User olduser = getUserById(user.getId());
+		user.setTeamList(olduser.getTeamList());
+		user.setApplicationList(olduser.getApplicationList());
+		user.setIsAdmin(olduser.getIsAdmin());
+		ActionContext.getContext().getSession().replace("user", user);
+		getHibernateTemplate().merge(user);
+	}
 }

@@ -175,4 +175,9 @@ public class ShowAction extends ActionSupport{
 		team = teamService.getTeamById(team.getId());
 		return "teamNeededFix";
 	}
+	
+	public String showUserNeededFix() {
+		user = userService.getUserById(user.getId());
+		return "userNeededFix";
+	}
 }

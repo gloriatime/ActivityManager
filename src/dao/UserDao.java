@@ -14,4 +14,6 @@ public interface UserDao {
   public User getUserById(int Id);
   
   public void changeToAdmin(int Id);
+  
+  public void update(User user);
 }

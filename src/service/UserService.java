@@ -12,6 +12,9 @@ public interface UserService {
 	 // 查询用户
 	 public User getUserById(int Id);
 	 
-	 // 更改用户信息
+	 // 升级用户为管理员
 	 public void changeToAdmin(int Id) ;
+	 
+	 // 修改用户信息
+	 public void update(User user);
 }

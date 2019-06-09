@@ -7,18 +7,29 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.struts2.ServletActionContext;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import model.Activity;
 import model.Team;
+import model.User;
 import service.ActivityService;
 import service.TeamService;
+import service.UserService;
 
 public class ManageAction extends ActionSupport{
+	private User user;
 	private Team team;
 	private Activity activity;
+	private UserService userService;
 	private TeamService teamService;
 	private ActivityService activityService;
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 	public Team getTeam() {
 		return team;
 	}
@@ -30,6 +41,12 @@ public class ManageAction extends ActionSupport{
 	}
 	public void setActivity(Activity activity) {
 		this.activity = activity;
+	}
+	public UserService getUserService() {
+		return userService;
+	}
+	public void setUserService(UserService userService) {
+		this.userService = userService;
 	}
 	public TeamService getTeamService() {
 		return teamService;
@@ -89,6 +106,12 @@ public String FixTeam() {
 		teamService.updateTeam(team);
 		return "manage_fixTeam";
 	}
+
+public String FixUser() {
+	// ActionContext.getContext().getSession().replace("user", user);
+	userService.update(user);
+	return "manage_fixUser";
+}
 
 public String DissolveTeam() {
 	

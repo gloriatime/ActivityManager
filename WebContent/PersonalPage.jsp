@@ -53,6 +53,19 @@
 					<li>年级：<s:property value="grade"/></li>
 					<li>专业：<s:property value="major"/></li>
 					<li>QQ：<s:property value="QQ"/></li>
+					
+					<s:url id="fixUser_url" action="show_showUserNeededFix" >
+ 
+   							<s:param name="user.Id">
+ 
+    		  					<s:property value="Id"/>
+
+  			 				</s:param>
+ 
+					</s:url>
+					
+					<s:a href="%{fixUser_url}">修改</s:a>
+					
 					</s:iterator>
 				</ul>
 		

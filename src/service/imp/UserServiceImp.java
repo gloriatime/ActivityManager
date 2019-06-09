@@ -34,5 +34,11 @@ public class UserServiceImp implements UserService{
 		userDao.changeToAdmin(Id);
 	}
 
+	@Override
+	public void update(User user) {
+		// TODO Auto-generated method stub
+		userDao.update(user);
+	}
+
 
 }
